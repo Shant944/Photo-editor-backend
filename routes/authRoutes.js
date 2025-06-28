@@ -10,8 +10,11 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/',
-    successRedirect: process.env.FRONTEND_URL
-  })
+    session: true,
+  }),
+  (req, res) => {
+    res.redirect(process.env.FRONTEND_URL);
+  }
 );
 
 router.get('/me', (req, res) => {
