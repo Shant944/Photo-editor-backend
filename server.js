@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://web-photo-edit.netlify.app',
   credentials: true
 }));
 
@@ -30,7 +30,7 @@ app.use(session({
   cookie: {
     sameSite: true,
     secure: false,
-    maxAge: 1000 * 60 * 60 * 24 // 1 օր
+    maxAge: 1000 * 60 * 60 * 24
   }
 }));
 
