@@ -28,8 +28,8 @@ app.use(session({
     collectionName: 'sessions'
   }),
   cookie: {
-    sameSite: 'lax',     // Development-friendly (HTTPS-ի համար օգտագործել 'none')
-    secure: false,       // ❗ Must be false for localhost HTTP
+    sameSite: true,
+    secure: false,
     maxAge: 1000 * 60 * 60 * 24 // 1 օր
   }
 }));
@@ -43,10 +43,8 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
-// Ռաութերներ
 app.use('/auth', authRoutes);
 app.use('/images', imageRoutes);
 
-// Սերվերի գործարկում
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
