@@ -15,6 +15,8 @@ router.get('/google/callback',
 );
 
 router.get('/me', (req, res) => {
+  console.log(req.user);
+  
   res.send(req.user || null);
 });
 
