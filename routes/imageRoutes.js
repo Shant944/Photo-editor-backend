@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Upload image
+
 router.post('/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
@@ -18,7 +18,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
   res.json({ filename: req.file.filename });
 });
 
-// Crop image
+
 router.post('/crop', async (req, res) => {
   try {
     const { filename, width, height } = req.body;
@@ -33,7 +33,7 @@ router.post('/crop', async (req, res) => {
   }
 });
 
-// Black & White
+
 router.post('/bw', async (req, res) => {
   try {
     const { filename } = req.body;
@@ -47,7 +47,7 @@ router.post('/bw', async (req, res) => {
   }
 });
 
-// Resize image
+
 router.post('/resize', async (req, res) => {
   try {
     const { filename, width, height } = req.body;
@@ -62,7 +62,7 @@ router.post('/resize', async (req, res) => {
   }
 });
 
-// Pixelate image
+
 router.post('/pixelate', async (req, res) => {
   try {
     const { filename } = req.body;

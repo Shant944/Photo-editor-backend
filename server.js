@@ -14,6 +14,8 @@ require('./config/passport');
 
 const app = express();
 
+app.set("trust proxy", 1)
+
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true,
@@ -45,8 +47,8 @@ app.use('/auth', authRoutes);
 app.use('/images', imageRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB error:', err));
+  .then(() => console.log(' MongoDB connected'))
+  .catch(err => console.error(' MongoDB error:', err));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
